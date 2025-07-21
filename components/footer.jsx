@@ -2,33 +2,28 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Mail, Linkedin, Twitter, Instagram, Globe } from 'lucide-react';
+import { Mail, Linkedin, Instagram, Globe } from 'lucide-react';
 
 const SOCIAL_LINKS = [
   {
     name: 'Email',
     icon: <Mail className="h-5 w-5" />,
-    href: 'mailto:adarshp.1133@gmail.com'
+    href: 'mailto:koushikjalan12@gmail.com'
   },
   {
     name: 'LinkedIn',
     icon: <Linkedin className="h-5 w-5" />,
-    href: 'https://linkedin.com/in/adarshpandey1133'
-  },
-  {
-    name: 'Twitter',
-    icon: <Twitter className="h-5 w-5" />,
-    href: 'https://twitter.com/proffgarryoak'
+    href: 'https://linkedin.com/in/koushikjalan'
   },
   {
     name: 'Instagram',
     icon: <Instagram className="h-5 w-5" />,
-    href: 'https://instagram.com/rnkpandey'
+    href: 'https://www.instagram.com/koushikjalan/'
   },
   {
-    name: 'Portfolio',
+    name: 'Codeforces',
     icon: <Globe  className="h-5 w-5" />, // Using GitHub as portfolio icon
-    href: 'https://adarshp1133.vercel.app'
+    href: 'https://codeforces.com/profile/Koushik'
   }
 ];
 

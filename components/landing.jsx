@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/card';
 import { SignInButton, useAuth } from '@clerk/nextjs';
 import Image from 'next/image';
-import { Cherry, BookOpen, Cloud, Waves, PenBox, Brain, Sparkles } from 'lucide-react';
+import { Cherry, BookOpen, Cloud, PenBox, Brain, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Landing() {
@@ -45,111 +45,137 @@ export default function Landing() {
 
   return (
     <div className="min-h-screen bg-[#181818] text-[#fffbe6] flex flex-col">
-      {/* Navigation */}
-      <nav className="w-full px-0 py-6 flex justify-center items-center border-b border-[#ffd60033]">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/logo.png"
-            alt="MindInk Logo"
-            width={80}
-            height={40}
-            className="h-10 w-auto rounded shadow-md border border-[#ffd60033] bg-[#232323]"
-            priority
-          />
-          <span className="text-2xl font-bold tracking-tight text-[#ffd600] font-sans"><h1>MindInk</h1></span>
-        </div>
-      </nav>
-
-      {/* Hero Section - Centered, vertical, bold */}
-      <section className="flex-1 flex flex-col justify-center items-center text-center px-4 py-16 gap-8">
-        <h1 className="text-5xl md:text-7xl font-extrabold leading-tight text-[#ffd600] drop-shadow-lg mb-4">
-          Unlock Your Mind
-        </h1>
-        <p className="text-2xl md:text-3xl text-[#fffbe6]/90 max-w-2xl mx-auto mb-8">
-          MindInk is your AI-powered journal companion for deep self-reflection, mood insights, and personal growth.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-6 justify-center">
-          <AuthButton 
-            className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-10 py-6 text-xl rounded-full font-bold shadow-lg border border-[#ffd600]"
-            isPrimary
-          >
-            <PenBox size={22} />
-            {isSignedIn ? 'Continue Writing' : 'Start Journaling'}
-          </AuthButton>
-          <Button
-            onClick={scrollToFeatures}
-            variant="outline"
-            className="border-[#ffd600] text-[#ffd600] hover:bg-[#ffd600]/10 px-10 py-6 text-xl rounded-full font-bold shadow-lg"
-          >
-            Explore Features
-          </Button>
+      {/* Hero Section - Minimal and elegant */}
+      <section className="flex-1 flex flex-col justify-center items-center px-6 py-24">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          
+          <h1 className="text-5xl md:text-6xl font-bold leading-tight text-[#ffd600]">
+            Mind<span className="text-[#fffbe6]">Ink</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-[#fffbe6]/80 max-w-2xl mx-auto leading-relaxed">
+            The professional's choice for AI-powered journaling and self-reflection.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+            <AuthButton 
+              className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-8 py-5 text-base rounded-lg font-semibold border border-[#ffd600] transition-all hover:scale-[1.02]"
+              isPrimary
+            >
+              <PenBox size={18} className="mr-2" />
+              {isSignedIn ? 'Continue Journaling' : 'Get Started'}
+            </AuthButton>
+            <Button
+              onClick={scrollToFeatures}
+              variant="outline"
+              className="border-[#ffd600] text-[#ffd600] bg-[#232323] hover:text-[#ffd600]/50 hover:bg-[#ffd600]/10 px-8 py-5 text-base rounded-lg font-semibold transition-all hover:scale-[1.02]"
+            >
+              Learn More
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Features Section - horizontal scroll, cards pop */}
-      <section ref={featuresRef} className="w-full bg-[#232323] py-20 rounded-t-3xl shadow-inner">
-        <Waves size={40} className="text-[#ffd600] mb-10 mx-auto"/>
-        <h2 className="text-4xl font-extrabold text-center mb-12 text-[#ffd600] tracking-tight">
-          Why MindInk?
-        </h2>
-        <div className="overflow-x-auto flex gap-8 px-8 md:px-20 pb-4 snap-x">
-          {[
-            {
-              icon: <Brain className="h-10 w-10 text-[#ffd600] mx-auto" />,
-              title: 'AI Mood Analysis',
-              description: 'Detect emotional patterns and gain actionable insights about your mood trends.',
-            },
-            {
-              icon: <Sparkles className="h-10 w-10 text-[#ffd600] mx-auto" />,
-              title: 'Smart Summaries',
-              description: 'Concise AI summaries help you spot key themes and reflect on your journey.',
-            },
-            {
-              icon: <Cloud className="h-10 w-10 text-[#ffd600] mx-auto" />,
-              title: 'Cloud Sync',
-              description: 'Access your journal securely from any device, anytime, anywhere.',
-            },
-            {
-              icon: <BookOpen className="h-10 w-10 text-[#ffd600] mx-auto" />,
-              title: 'Private & Secure',
-              description: 'Your entries are encrypted and always yours—privacy is our promise.',
-            },
-            {
-              icon: <Cherry className="h-10 w-10 text-[#ffd600] mx-auto" />,
-              title: 'Beautiful Experience',
-              description: 'A delightful, distraction-free interface designed for mindful writing.',
-            },
-          ].map((feature, idx) => (
-            <Card key={idx} className="min-w-[320px] max-w-xs bg-[#181818] border border-[#ffd60033] rounded-2xl shadow-2xl snap-center flex flex-col items-center py-8 px-6 mx-auto">
-              <CardHeader className="flex flex-col items-center gap-3 mb-2">
-                {feature.icon}
-                <CardTitle className="text-xl font-bold text-[#ffd600] text-center">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-[#fffbe6]/80 text-center text-base">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+      {/* Divider */}
+      <div className="h-px w-full bg-gradient-to-r from-transparent via-[#ffd60033] to-transparent"></div>
+
+      {/* Features Section - Clean and professional */}
+      <section ref={featuresRef} className="w-full py-24 bg-[#1e1e1e]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold text-[#ffd600] mb-4">
+              Professional Journaling Tools
+            </h2>
+            <p className="text-lg text-[#fffbe6]/70 max-w-3xl mx-auto">
+              Designed for those who take self-reflection seriously
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Brain className="h-8 w-8 text-[#ffd600]" />,
+                title: 'Advanced Mood Analytics',
+                description: 'AI-powered emotional pattern recognition with professional-grade insights and reporting.',
+              },
+              {
+                icon: <Sparkles className="h-8 w-8 text-[#ffd600]" />,
+                title: 'Intelligent Summaries',
+                description: 'Concise executive summaries of your journal entries with key takeaways.',
+              },
+              {
+                icon: <Cloud className="h-8 w-8 text-[#ffd600]" />,
+                title: 'Secure Cloud Sync',
+                description: 'Enterprise-grade encryption with seamless cross-device synchronization.',
+              },
+              {
+                icon: <BookOpen className="h-8 w-8 text-[#ffd600]" />,
+                title: 'Privacy First',
+                description: 'Zero-knowledge architecture ensures your thoughts remain completely private.',
+              },
+              {
+                icon: <Cherry className="h-8 w-8 text-[#ffd600]" />,
+                title: 'Minimalist Design',
+                description: 'Distraction-free interface optimized for focused writing sessions.',
+              },
+            ].map((feature, idx) => (
+              <Card 
+                key={idx} 
+                className="bg-[#232323] border border-[#2a2a2a] rounded-lg hover:border-[#ffd60066] transition-all h-full group"
+              >
+                <CardHeader className="flex flex-row items-start gap-4 pb-0">
+                  <div className="p-2 rounded-md bg-[#1e1e1e] border border-[#ffd60033] group-hover:bg-[#ffd600]/10">
+                    {feature.icon}
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg font-medium text-[#ffd600]">
+                      {feature.title}
+                    </CardTitle>
+                    <CardDescription className="text-[#fffbe6]/70 text-sm mt-1">
+                      {feature.description}
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Final CTA - full width, bold, different placement */}
-      <section className="py-20 bg-[#181818] flex flex-col items-center justify-center border-t border-[#ffd60033]">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-[#ffd600] mb-6 text-center">
-          Ready to Begin?
-        </h2>
-        <p className="text-lg md:text-2xl text-[#fffbe6]/80 mb-10 text-center max-w-xl">
-          Join thousands discovering deeper self-awareness through intelligent journaling. Your story starts here.
-        </p>
-        <AuthButton 
-          className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-12 py-6 text-xl rounded-full font-bold shadow-xl border border-[#ffd600]"
-          isPrimary
-        >
-          {isSignedIn ? 'Go to Dashboard' : 'Start Writing Now'}
-        </AuthButton>
+      {/* Testimonial Section */}
+      <section className="w-full py-20 bg-[#181818]">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <blockquote className="space-y-4">
+            <p className="text-xl italic text-[#fffbe6]/80">
+              "MindInk has transformed my daily reflection practice. The analytics provide insights I never would have noticed on my own."
+            </p>
+            <footer className="text-[#ffd600] font-medium">
+              — Dr. Sarah Chen, Clinical Psychologist
+            </footer>
+          </blockquote>
+        </div>
       </section>
+
+      {/* Final CTA - Elevated design */}
+      <section className="w-full py-24 bg-gradient-to-br from-[#1a1a1a] to-[#121212]">
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <div className="p-8 bg-[#232323] rounded-xl border border-[#2a2a2a] shadow-lg">
+            <h2 className="text-2xl font-semibold text-[#ffd600] mb-4">
+              Ready to elevate your journaling practice?
+            </h2>
+            <p className="text-[#fffbe6]/70 mb-6">
+              Join professionals who use MindInk for meaningful self-discovery.
+            </p>
+            <AuthButton 
+              className="bg-[#ffd600] hover:bg-[#ffe066] text-[#181818] px-8 py-4 text-base rounded-lg font-medium border border-[#ffd600] transition-all hover:scale-[1.02] w-full sm:w-auto"
+              isPrimary
+            >
+              {isSignedIn ? 'Open Dashboard' : 'Start Your 30-Day Trial'}
+            </AuthButton>
+          </div>
+        </div>
+      </section>
+
+      {/* Minimal Footer */}
+      
     </div>
   );
 }
