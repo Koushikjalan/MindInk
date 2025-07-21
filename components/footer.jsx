@@ -77,7 +77,7 @@ const Footer = () => {
         {/* Newsletter or CTA */}
         <div className="flex flex-col items-center md:items-end gap-3 md:w-1/3">
           <span className="text-lg font-bold text-[#ffd600] mb-1">Stay Inspired</span>
-          <a href="mailto:adarshp.1133@gmail.com" className="inline-block px-6 py-2 rounded-full bg-[#ffd600] text-[#181818] font-semibold shadow-md hover:bg-[#ffe066] transition-colors">Contact Us</a>
+          <a href="mailto: koushikjalan12@gmail.com" className="inline-block px-6 py-2 rounded-full bg-[#ffd600] text-[#181818] font-semibold shadow-md hover:bg-[#ffe066] transition-colors">Contact Us</a>
           <p className="text-xs text-[#fffbe6]/60 mt-2">We love feedback and collaboration!</p>
         </div>
       </div>
